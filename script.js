@@ -72,6 +72,18 @@ for (let i = 0; i < arr.length; i++) {
     if (firstLetter.charAt(0) === '2' || firstLetter.charAt(0) === '4')
         console.log(firstLetter);
 }
+let n = 100;
+
+nextPrime:
+for (let i = 2; i <= n; i++) {
+
+    for (let j = 2; j < i; j++) {
+        if (i % j == 0) continue nextPrime;
+    }
+
+    console.log(i + ' Делитель этого числа: 1 и ' + i);
+}
+
 
 
 
