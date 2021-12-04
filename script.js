@@ -65,3 +65,13 @@ function showString(arg) {
         return arg;
     }
 }
+const arr = [24587, 52157, 96548, 45279, 52174, 23649, 75103];
+for (let i = 0; i < arr.length; i++) {
+    let firstLetter = arr[i];
+    firstLetter = firstLetter.toString();
+    if (firstLetter.charAt(0) === '2' || firstLetter.charAt(0) === '4')
+        console.log(firstLetter);
+}
+
+
+
