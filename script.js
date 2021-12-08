@@ -1,17 +1,46 @@
-let d = new Date();
-let n = d.getDay();
-const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-week.forEach((element, index) => {
-    let div = document.createElement('div');
-    div.innerHTML = element;
-    if (index == 6 || index == 5) {
-        div.style.cssText = `font-style: italic; `;
+let divFullDate = document.querySelector('.fulldate');
+let divShortDate = document.querySelector('.shortdate');
+let shortDate;
+let fullDate;
+let display = function () {
+    let now = new Date();
+    let day = now.getDate();
+    let year = now.getFullYear();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let second = now.getSeconds();
+    let messageHour = '';
+    function days() {
+        let week = now.getDay();
+        const weeks = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+        return weeks[week - 1];
     }
-    if (index == n - 1) {
-        div.style.cssText = `font-weight: bold; `;
+    function month() {
+        let month = now.getMonth();
+        const months = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря',];
+        return months[month];
     }
-    document.body.append(div);
-});
+    if (hour == 1 || hour == 21) {
+        messageHour = 'час';
+    }
+    else if (hour >= 2 || hour <= 4) {
+        messageHour = 'часа';
+    }
+    else {
+        messageHour = 'часов';
+    }
+    shortDate = now.toLocaleDateString() + ' - ' + now.toLocaleTimeString();
+    fullDate = 'Сегодня ' + days() + ', ' + day + ' ' + month() + ' ' + year + ' года, ' + hour + ' ' + messageHour + ' ' + minute + ' минут ' + second + ' секунды';
+}
+let update = function () {
+    now = new Date();
+    display()
+    divFullDate.innerHTML = fullDate;
+    divShortDate.innerHTML = shortDate;
+}
+setInterval(update, 1000);
+
+
 
 
 
