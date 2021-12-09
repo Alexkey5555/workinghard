@@ -23,10 +23,10 @@ let display = function () {
     if (hour == 1 || hour == 21) {
         messageHour = 'час';
     }
-    else if (hour >= 2 || hour <= 4) {
+    else if (hour >= 2 && hour <= 4 || hour >= 22 && hour <= 24) {
         messageHour = 'часа';
     }
-    else {
+    else if (hour >= 5 && hour <= 20) {
         messageHour = 'часов';
     }
     shortDate = now.toLocaleDateString() + ' - ' + now.toLocaleTimeString();
